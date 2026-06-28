@@ -54,7 +54,7 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "Kokoaki Unzogawa",
+	name: "蕰藻川心秋",
 	bio: "Zhi Wo Zui Wo, Qi Wei Chun Qiu", // A short description of yourself, can be left empty
 	links: [
 		{
