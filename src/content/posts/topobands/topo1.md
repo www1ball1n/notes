@@ -9,6 +9,9 @@ draft: false
 lang: 'zh-CN'
 ---
 
+> 最初发表于知乎
+> https://zhuanlan.zhihu.com/p/2043930219019505956
+
 # 1. 实用知识
 
 ## 1.1 固体物理结论
