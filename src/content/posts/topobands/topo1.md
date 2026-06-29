@@ -22,7 +22,7 @@ $$
 H=\frac{\mathbf{p}^{2}}{2m} +V(\mathbf{r}) \\
 $$
 
-本征态可由量子数$\mathbf{k}$标记，其$|\psi _{n\mathbf{k}} \rangle $满足
+其本征态可由量子数$\mathbf{k}$标记，其$|\psi _{n\mathbf{k}} \rangle $满足
 
 $$
 \psi _{n\mathbf{k}}(\mathbf{r}) =\mathrm{e}^{i\mathbf{k} \cdot \mathbf{r}} u_{n\mathbf{k}}(\mathbf{r})
