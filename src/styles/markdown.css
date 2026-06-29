@@ -113,9 +113,39 @@
     }
 
     .katex-display-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         max-width: 100%;
         overflow-x: auto;
         margin: 1em 0;
     }
-    
+
+    /* OverlayScrollbars 会在容器内生成额外 wrapper，确保内容区居中 */
+    .katex-display-container .os-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* 强制调整 KaTeX 显示块的宽度和对齐，使用 !important 覆盖库样式 */
+    .katex-display {
+        width: auto !important;
+        margin: 0 !important;
+        display: inline-block !important;
+        text-align: center !important;
+    }
+
+    .katex-display .katex {
+        display: inline-block !important;
+    }
+
+    /* 支持 OverlayScrollbars 在不同版本下使用 data-* 属性的情况 */
+    .katex-display-container > [data-overlayscrollbars-viewport],
+    .katex-display-container > [data-overlayscrollbars-viewport] > * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
