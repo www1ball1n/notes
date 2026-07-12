@@ -117,7 +117,7 @@
         justify-content: center;
         align-items: center;
         max-width: 100%;
-        overflow-x: auto;
+        overflow: hidden;
         margin: 1em 0;
     }
 
@@ -127,6 +127,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        overflow: hidden;
     }
 
     /* 强制调整 KaTeX 显示块的宽度和对齐，使用 !important 覆盖库样式 */
@@ -135,6 +136,8 @@
         margin: 0 !important;
         display: inline-block !important;
         text-align: center !important;
+        overflow: hidden !important;
+        pointer-events: none;
     }
 
     .katex-display .katex {
@@ -147,5 +150,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
     }
 }
