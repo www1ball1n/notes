@@ -1,3 +1,10 @@
+.link {
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--link-underline, var(--primary));
+}
 .custom-md {
     h1 {
         @apply text-3xl;
