@@ -4,7 +4,7 @@ published: 2026-06-28
 description: ''
 image: ''
 tags: [Basics, TopoPhysics, Theory]
-category: 'Textbook Notes'
+category: 'Learning Notes'
 draft: false
 lang: 'zh-CN'
 ---
