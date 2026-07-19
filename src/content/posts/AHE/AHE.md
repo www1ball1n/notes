@@ -1,5 +1,5 @@
 ---
-title: Anomolous Hall 的典中典理论和有关材料
+title: Anomolous Hall 的典中典理论，SOC，和有关材料
 published: 2026-07-17
 description: ''
 image: ''
@@ -59,3 +59,35 @@ $$
 \sigma _{xy} =A\tau ^{-2} +B\tau ^{-1} +c
 $$
 如果 $\tau $ 比较大 / 往往低温，则 skew scattering 主导，good metal regime 是 $\tau ^{-1}$ 主导，还要注意分辨 intrinsic 和 side-jump，如果是 low mobility regime，导电靠 hopping 完成，上面的图像可能不适用了。
+
+# 后期的发展
+
+2000s 前后的一个研究重点是铁磁半导体，textbook case being (Ga, Mn)As。FM 是 RKKY 引导的，并且 scattering independent 项主导，现在人们普遍认为是 intrinsic，有一个 mean field 的估计。但是之后铁磁半导体就僵化了。
+
+GMR 和 colossal MR 出现之后这个又火了一波，集中在氧化物 FM 上面，并且得到了一个新的 AHE 机制就是 spin chirality，也就是磁矩有空间变化，电子经过时积累 Berry phase。比如 manganites, whose transport generally includes hopping btw Mn sites leading to colossal MR. 这个就联系到 skyrmion，也是一个 spin texture，而 spin chirality 就是 more population of L skyrmion v.s. R skyrmion. 
+
+更后面就是 TI，Weyl，TMD 的 valley Hall effect 等等。
+
+# 铁磁性和 SOC 和 spin relaxation
+
+导体 FM 一般是 itinerent 的，最简单的 theory 是 Stoner 给出的那套 mean field 理论。FM semiconductor 里面就是 hole-mediated Mn FM 也就是 RKKY，而 TI 当中是 van Vleck mechanism。
+
+$M(\mathbf{r})$ 的 inhomogeneity 的例子是 skyrmion，其在输运的作用我们上面说了，其实就是给了一个有效磁场，其效果甚至可以达到 1000 T for skyrmions smaller than 10 nm。这个新的机制造成的 Hall effect 叫 topological Hall effect。不过由于 skyrmion 形成了会削弱磁化强度，这个有时候和 AHE 还分不清楚。
+
+我们接下来讲 spin-orbit coupling，注意其真正形式是
+$$
+H_{\text{SO}} =\frac{\hbar }{4m^{2} c^{2}} \ \mathbf{\sigma } \cdot ( \nabla V\times \mathbf{p})
+$$
+是 relativistic effect，运动的电子感受到电场变换而来的磁场！这个电场有很多来源，所以这里写的是所有 potential 之和，而不是直接 $\mathbf{L} \cdot \mathbf{S}$ 形式。在原子中 $\nabla V\varpropto \hat{r}$ 所以变化成了 $\mathbf{L} \cdot \mathbf{S}$，适合描述内层电子。但是外层电子并非，其 $\nabla V$ 更像是一个平均场，包含了 intrinsic 的电子贡献，和 extrinsic 的 impurities & phonons. 对于二维我们讲过了 Rashba，more generally it is a momentum-dependant effective magnetic field:
+$$
+H_{R} =\mathbf{\sigma } \cdot \mathbf{B}(\mathbf{k})
+$$
+这个形式和 Dyakonov-Perel mechanism of spin relaxation 相关。scalar scattering 之后，$\mathbf{k}\rightarrow \mathbf{k}^{\prime }$，从而感受到不同的有效磁场。这时候需要比较两个 characteristic time，一个是 relaxation time of scattering $\tau $，另一个是 spin precession frequency$\varpropto B$。如果散射很多，$B\ll \tau ^{-1}$，自旋来不及进动，从而 momentum scattering increases the spin lifetime。如果 precession 快于散射，$B\gg \tau ^{-1}$，那么散射会阻碍自旋的寿命。第一个区域比较反直觉，但是在之前的年代，能测到的就只有 DP 这个区间。
+
+另外一种散射机制 Elliott-Yafet 和 spin-dependant scattering 相关，而 DP 是 scalar scattering + SOC 导致的。
+
+再简单讲一句 non-linear AHE，在 few-layer and monolayer WTe $_{2}$ 当中测到。如果 TRS 在，二阶的非线性响应是 Onsager relation 允许的，且一般是 extrinsic 的。如果没有 TRS，可以是 intrinsic，由 Berry curvature dipole $\int _{\mathbf{k}}\mathbf{k} \Omega (\mathbf{k})$ 导致。具体的我们之后看文献遇到了再说。
+
+关于 TI 的部分，慢慢更新 TI 再说。
+
+> 如果还要再补充 SOC，就在这里补充了。
