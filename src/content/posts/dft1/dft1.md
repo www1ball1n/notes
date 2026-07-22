@@ -94,10 +94,88 @@ $$
 
 有个 $v$-representability problem，也就是如何确保我们最小化时取到的 $n$ 真的在这个 $\mathscr{N}$ 里面？如何刻画这个 $\mathscr{N}$？这就要看 Lieb 的做法了，但我们之后再补充。
 
-## Lieb 的构造
-
 # 原子单位制
+
+原子单位制很简单，我们定义：
+$$
+\frac{1}{2} \ \text{Hartree} =1\ \text{Ry} =13.6\ \text{eV} =\frac{e^{2}}{8\pi \epsilon _{0} a_{0}} =\frac{\hbar ^{2}}{2m_{e} a_{0}^{2}}
+$$
+那么三项分别变成：
+$$
+\begin{aligned}
+\hat{T} & =-\frac{E_{\text{Hartree}}}{2}\sum\limits _{i=1}^{N}( a_{0} \nabla _{i})^{2}\\
+V_{ee} & =E_{\text{Hartree}}\sum\limits _{i< j}\frac{1}{| \mathbf{r}_{i} -\mathbf{r}_{j}| /a_{0}}\\
+v_{\text{ext}}(\mathbf{r}_{i}) & =-E_{\text{Hartree}}\sum\limits _{A}\frac{Z_{A}}{| \mathbf{r}_{i} -\mathbf{R}_{A}| /a_{0}}
+\end{aligned}
+$$
+因此如果把距离用 $a_{0}$ 做单位，能量用 Hartree 做单位，那么：
+$$
+\hat{H}_{e} =-\frac{1}{2}\sum\limits _{i} \nabla _{i}^{2} +\sum\limits _{i,j}^{i< j}\frac{1}{r_{ij}} -\sum\limits _{iA}\frac{Z_{A}}{r_{iA}}
+$$
+得到简化，要恢复一般单位的话，就分别对距离和能量乘上 $a_{0}$ 和 Hartree 就可以了。
+
+之后 KS 的推导我们使用原子单位制，可以少写一些东西。
 
 # Kohn-Sham theory
 
 K-S theory 实际上把 DFT map 到一个单电子方程上面，从而可以使用各种单电子计算的技术，比如各种基的选取、pseudopotential 等等。我们来看他是怎么做的。
+
+K-S theory 的基础假设是：存在一个单粒子外势 $v_{s}(\mathbf{r})$ ，使得其对应单粒子 Hamiltonian 的基态，也就是一个 Slater determinant 态 $|\phi _{1} ,\cdots ,\phi _{N} \rangle $，其得到的 $n(\mathbf{r})$ 和我们需要求的基态 $|\Psi \rangle $ 相同。于是给定一个 $n(\mathbf{r})$ ，这个 determinant $\{\phi _{i}\}$ 可以定义为使得动能项最小的任意一组 $\{\phi _{i}\}$，可能不唯一。
+$$
+\{\phi _{i}\} \in \underset{\{\phi _{i}\}\rightarrow n}{\text{argmin}} \ \left\{-\frac{1}{2}\sum\limits _{i}\int \mathrm{d}\mathbf{r}\left( \phi _{i}^{*} \nabla ^{2} \phi _{i}\right)\right\}
+$$
+再定义 $T_{s}[ n]$ 为这个动能项的最小值：
+$$
+T_{s}[ n] =\underset{\{\phi _{i}\}\rightarrow n}{\text{min}} \ \left\{-\frac{1}{2}\sum\limits _{i}\int \mathrm{d}\mathbf{r}\left( \phi _{i}^{*} \nabla ^{2} \phi _{i}\right)\right\}
+$$
+再定义 exchange-correlation functional $E_{xc}[ n]$ 为：
+$$
+E_{xc}[ n] =F[ n] -T_{s}[ n] -E_{\text{H}}[ n]
+$$
+其中 Hartree term
+$$
+E_{\text{H}}[ n] =\frac{1}{2}\int \mathrm{d}\mathbf{r}\mathrm{d}\mathbf{r}^{\prime }\frac{n(\mathbf{r}) n\left(\mathbf{r}^{\prime }\right)}{\left| \mathbf{r} -\mathbf{r}^{\prime }\right| }
+$$
+这个 functional 基本上包含了电子的关联还有动能的差异部分。整个能量泛函 $E[ n]$ 写成：
+$$
+E[ n] =T_{s}[ n] +E_{xc}[ n] +E_{\text{H}}[ n] +\int n(\mathbf{r}) v_{\text{ext}}(\mathbf{r})\mathrm{d}\mathbf{r}
+$$
+
+由于我们上面有一个假设，在这个假设成立的情况下，我们在所有的 non-interacting $v$-representable $n(\mathbf{r})$ 里变分，也可以期望得到正确的基态电子密度 $n_{0}(\mathbf{r})$。又根据定义可以转化为在 $\{\phi _{i}\}$ 当中变分，因为取两次最小值等价于取一次最小值。这样，我们就把对基态电子密度的变分转换成对 auxilliary non-interacting fermion state 的变分，后面用简单的变分法，在各轨道正交归一的情况下，得出 Kohn-Sham 方程：
+$$
+\left[ -\frac{1}{2} \nabla ^{2} +v_{\text{ext}}(\mathbf{r}) +v_{\text{H}}(\mathbf{r}) +v_{xc}(\mathbf{r})\right] \phi _{i}(\mathbf{r}) =\sum\limits _{j} \epsilon _{ij} \phi _{j}(\mathbf{r})
+$$
+那么注意这个 $\phi _{j}$ 构造出的 1PDM $\tilde{\Gamma }_{1}\left(\mathbf{r}^{\prime } ;\mathbf{r}\right)$ 和真实基态的 1PDM 只有对角元是相同的，非对角元可以完全不同。这个 Hermitian 矩阵 $\epsilon _{ij}$ 可以被一个幺正变换对角化，而电子密度是保持的，最后得到变换后的 orbitals 的标准 KS equation
+$$
+\left[ -\frac{1}{2} \nabla ^{2} +v_{\text{ext}}(\mathbf{r}) +v_{\text{H}}(\mathbf{r}) +v_{xc}(\mathbf{r})\right] \phi _{i}(\mathbf{r}) =\epsilon _{i} \phi _{i}(\mathbf{r})
+$$
+但是此处没有 Koopsman 定理，也就是 $\epsilon _{i}$ 不完全等同于准粒子能量。这其中只有 $v_{xc}(\mathbf{r})$ 是我们不知道的，其拟设就是所谓 Jacob's ladder 所说的，从 LDA 开始有一大堆经验上的东西。
+
+# LDA and beyond
+
+我们大致列出一些和 $E_{xc}$ 相关的拟设，一般会区分交换和关联。最常用的有 LDA：
+$$
+E_{\text{LDA}} =\int \mathrm{d}\mathbf{r} \ f( n(\mathbf{r}))
+$$
+以及 GGA
+$$
+E_{\text{GGA}} =\int \mathrm{d}\mathbf{r} \ f( n(\mathbf{r}) ,\nabla n(\mathbf{r}))
+$$
+其中最著名的是 PBE 泛函，其交换能。
+$$
+E_{\text{PBE}}^{x} =-\int n^{4/3} \cdot \frac{3}{4}\left(\frac{3}{\pi }\right)^{1/3}\left( 1+\frac{\mu s^{2}}{1+\mu s^{2} /\kappa }\right)\mathrm{d}\mathbf{r}
+$$
+那么第一项是均匀电子气的交换，通过均匀电子气就可以算出来。LDA 的关联部分一般来自于电子气的 Monte Carlo。括号内第二项是 GGA 修正，这里的 $s$ 定义为
+$$
+s=\frac{1}{2k_{F}}\frac{| \nabla n| }{n} ,k_{F} =\left( 3\pi ^{2} n\right)^{1/3}
+$$
+是一个无量纲的梯度。一般在 $n$ 变化时 PBE 的交换关联比 LDA 要大。关联能则有其他修正。
+
+HF 泛函：
+$$
+E_{\text{HF}}^{x} =-\frac{1}{2}\sum\limits _{ij\sigma }\int \mathrm{d}\mathbf{r}\mathrm{d}\mathbf{r}^{\prime } \ \frac{\phi _{i\sigma }^{*}(\mathbf{r}) \phi _{j\sigma }^{*}(\mathbf{r}) \phi _{j\sigma }\left(\mathbf{r}^{\prime }\right) \phi _{i\sigma }\left(\mathbf{r}^{\prime }\right)}{\left| \mathbf{r} -\mathbf{r}^{\prime }\right| }
+$$
+还有杂化泛函，比如 B3LYP
+$$
+E_{\text{B3LYP}} =0.2E_{\text{HF}}^{x} +0.8E_{\text{LDA}}^{x} +0.72\Delta E_{\text{B88}}^{x} +0.81E_{\text{LYP}}^{c} +0.19E_{\text{VWN}}^{c}
+$$
