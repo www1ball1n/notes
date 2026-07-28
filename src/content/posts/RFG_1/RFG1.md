@@ -1,11 +1,11 @@
 ---
 title: Unresolved Questions in RFe6Ge6 (up to now)
-published: 2026-07-14
+published: 2026-07-27
 description: ''
 image: ''
 tags: []
-category: ''
-draft: true 
+category: 'paper notes'
+draft: false 
 lang: ''
 ---
 
@@ -163,3 +163,4 @@ magnetic interaction is very sensitive to the Tb order/disorder process. 这里�
 
 [5] D. H. Ryan and J. M. Cadogan, Journal of Applied Physics 79, 6004 (1996).
 
+不想写了直接开干吧
