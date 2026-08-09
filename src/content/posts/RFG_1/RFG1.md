@@ -4,7 +4,7 @@ published: 2026-07-27
 description: ''
 image: ''
 tags: []
-category: 'paper notes'
+category: 'Paper Notes'
 draft: false 
 lang: ''
 ---
