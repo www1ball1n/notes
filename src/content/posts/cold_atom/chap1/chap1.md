@@ -3,7 +3,7 @@ title: 冷原子物理 笔记 Chap. 1
 published: 2026-08-10
 description: ''
 image: ''
-tags: []
+tags: [AMO]
 category: 'Learning Note'
 draft: false 
 lang: ''
@@ -368,6 +368,31 @@ $$
 
 ## How to do
 
-我们立刻发现我们要做的这个东西本质上也是 Raman，就是通过一个二阶光子过程把基态转移到激发态。如果用绝热演化的方式进行，困难在于那个 gap 不一定很大。所以改用一个 pump laser 和一个 stoke laser 去把他跳一下，假设二者能量是 $\omega_p, \omega_s$，耦合常数是含时的 $\Omega_p (t), \Omega_s (t)$，再引入两个 detuning，STIRAP 要求他们相等也就是初末态能量守恒。
+我们立刻发现我们要做的这个东西本质上也是 Raman，就是通过一个二阶光子过程把基态转移到激发态。如果用绝热演化的方式进行，困难在于那个 gap 不一定很大。所以改用一个 pump laser 和一个 stoke laser 去把他跳一下，假设二者能量是 $\omega_p, \omega_s$，耦合常数是含时的 $\Omega_p (t), \Omega_s (t)$，再引入两个 detuning
+$$
+\Delta _{1} =E_{ex} -E_{1} -\hbar \omega _{p}\\
+\Delta _{2} =E_{ex} -E_{2} -\hbar \omega _{s}
+$$
+并且要求 $\Delta _{1} =\Delta _{2} =\Delta $，那么经过旋转波近似之后，新的 Hamiltonian 就近似为：
+$$
+\begin{pmatrix}
+0 & 0 & \Omega _{p}\\
+0 & 0 & \Omega _{s}\\
+\Omega _{p} & \Omega _{s} & \Delta 
+\end{pmatrix}
+$$
+我们记 $A=\sqrt{\Omega _{p}^{2} +\Omega _{s}^{2}}$，哈密顿量可以写为
+$$
+\left( A\left(\frac{\Omega _{p}}{A} |1\rangle +\frac{\Omega _{s}}{A} |2\rangle \right) \langle e|+\mathrm{h.c.}\right) +\Delta |e\rangle \langle e|
+$$
+我们看到有一个态 $|B\rangle =\frac{\Omega _{p}}{A} |1\rangle -\frac{\Omega _{s}}{A} |2\rangle $ 是和 $|e\rangle $ 耦合的，而另一个 dark state
+$$
+|D\rangle =\frac{\Omega _{s}}{A} |1\rangle -\frac{\Omega _{p}}{A} |2\rangle 
+$$
+不和 $|e\rangle $ 耦合，因此我们可以调控两个耦合常数，使得 $|D\rangle $ 在开始接近 $|1\rangle $，而在结束以后接近 $|2\rangle $，通过这样的三能级系统中 dark state 的演化来完成 state passing。具体来讲，就是要让 $\Omega _{p}$ 在一开始为零，否则 $|1\rangle $ 态就跃迁上去了，结束的时候 $\Omega _{s} =0$，具体如图：
 
-> 更新中，快学完了
+![alt text](fig4.png)
+
+注意这个操作需要绝热，也就是说能级的间距 $\sqrt{A^{2} +\Delta ^{2}}$ 要足够大，如果参数变化的时间尺度是 $T$，那么 $T\gg \left( A^{2} +\Delta ^{2}\right)^{-1/2}$
+
+可以用它来实现 Feshbach molecules 到 ground state molecules 的转变。
