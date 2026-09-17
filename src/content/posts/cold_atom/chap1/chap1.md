@@ -4,7 +4,7 @@ published: 2026-08-10
 description: ''
 image: ''
 tags: [AMO]
-category: 'Learning Note'
+category: 'Learning Notes'
 draft: false 
 lang: ''
 ---
